@@ -1,0 +1,696 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; }
+
+  /* ── Paleta azul oscuro elegante + vino tinto ── */
+  :root {
+    --p1: #040d1e;   /* morado oscuro */
+    --p2: #071530;   /* morado medio */
+    --p3: #1a4a78;   /* morado claro */
+    --b1: #040d1e;   /* azul oscuro */
+    --b2: #0e2a50;   /* azul medio */
+    --b3: #c8daea;   /* azul muy claro */
+    --bg: #f4f6f8;   /* fondo lavanda suave */
+    --card: #ffffff;
+    --text: #1a2332;
+    --sub: #5a6a7a;
+    --border: #d8e0e8;
+    --sos: #6b2037;
+    --sos2: #4a1528;
+  }
+
+  .screens-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 20px 0;
+  }
+  .screen-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .screen-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sub);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .phone {
+    width: 195px;
+    height: 400px;
+    background: var(--bg);
+    border-radius: 32px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(13,31,60,0.13);
+    display: flex;
+    flex-direction: column;
+  }
+  .status-bar {
+    height: 20px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--sub);
+    flex-shrink: 0;
+  }
+  .screen-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── SCREEN 1: Inicio ── */
+  .s1-header {
+    background: linear-gradient(155deg, #040d1e 0%, #071530 70%, #060f22 100%);
+    padding: 18px 16px 22px;
+    color: #fff;
+    flex-shrink: 0;
+    border-radius: 0 0 24px 24px;
+  }
+  .s1-logo {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .s1-logo svg { width: 18px; height: 18px; }
+  .s1-title { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.2; margin-bottom: 4px; }
+  .s1-sub { font-size: 9px; opacity: 0.75; line-height: 1.4; }
+  .s1-pulse {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 6px;
+  }
+  .s1-pulse-inner {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(74,127,165,0.3);
+    border: 1px solid rgba(74,127,165,0.6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .s1-body { padding: 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .s1-sos {
+    background: linear-gradient(135deg, #6b2037, #4a1528);
+    border-radius: 18px;
+    padding: 10px 14px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(107,32,55,0.3);
+  }
+  .s1-sos-title { font-size: 11px; font-weight: 600; margin-bottom: 2px; }
+  .s1-sos-sub { font-size: 8px; opacity: 0.85; }
+  .s1-option {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(13,31,60,0.07);
+  }
+  .s1-option-icon {
+    width: 28px; height: 28px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .s1-option-text { font-size: 9px; font-weight: 600; color: var(--text); }
+  .s1-option-sub { font-size: 8px; color: var(--sub); }
+
+  /* ── SCREEN 2: Síntomas ── */
+  .s2-header {
+    background: linear-gradient(155deg, #040d1e, #071530);
+    padding: 14px 14px 18px;
+    color: #fff;
+    flex-shrink: 0;
+    border-radius: 0 0 20px 20px;
+  }
+  .s2-back { font-size: 9px; opacity: 0.7; margin-bottom: 6px; display: flex; align-items: center; gap: 3px; }
+  .s2-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .s2-sub { font-size: 8px; opacity: 0.7; }
+  .s2-body { padding: 10px 12px; flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 7px; }
+  .s2-section-label { font-size: 8px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: 0.07em; }
+  .s2-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 8px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--sub);
+    background: var(--card);
+    cursor: pointer;
+  }
+  .chip.active {
+    background: #e8eef4;
+    border-color: #1a4a78;
+    color: #071530;
+  }
+  .s2-severity { display: flex; gap: 5px; }
+  .sev-dot {
+    flex: 1;
+    height: 7px;
+    border-radius: 4px;
+    background: var(--border);
+  }
+  .sev-dot.on { background: linear-gradient(90deg, #071530, #0e2a50); }
+  .s2-intensity {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    font-size: 8px;
+    color: var(--sub);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .s2-btn {
+    background: linear-gradient(135deg, #071530, #0e2a50);
+    color: #fff;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: auto;
+    border: none;
+    box-shadow: 0 4px 12px rgba(13,31,60,0.2);
+  }
+
+  /* ── SCREEN 3: Chat IA ── */
+  .s3-header {
+    background: linear-gradient(155deg, #040d1e, #071530);
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 8px;
+    flex-shrink: 0;
+    border-radius: 0 0 18px 18px;
+  }
+  .s3-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a4a78, #071530);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .s3-hname { font-size: 11px; font-weight: 600; color: #fff; }
+  .s3-hstatus { font-size: 8px; color: rgba(255,255,255,0.65); }
+  .s3-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #86efac; display: inline-block; margin-right: 3px; }
+  .s3-body { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 7px; overflow: hidden; }
+  .msg { max-width: 80%; display: flex; flex-direction: column; }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; }
+  .msg-bubble {
+    padding: 7px 9px;
+    border-radius: 16px;
+    font-size: 8.5px;
+    line-height: 1.45;
+  }
+  .msg.bot .msg-bubble { background: var(--card); color: var(--text); border-bottom-left-radius: 4px; border: 1px solid var(--border); }
+  .msg.user .msg-bubble { background: linear-gradient(135deg, #071530, #0e2a50); color: #fff; border-bottom-right-radius: 4px; }
+  .msg-time { font-size: 7px; color: var(--sub); margin-top: 2px; align-self: flex-end; }
+  .s3-typing { display: flex; align-items: center; gap: 3px; padding: 7px 9px; background: var(--card); border-radius: 16px; border-bottom-left-radius: 4px; border: 1px solid var(--border); width: fit-content; }
+  .s3-typing span { width: 4px; height: 4px; border-radius: 50%; background: #1a4a78; animation: bounce 1s infinite; }
+  .s3-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .s3-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce { 0%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-4px); } }
+  .s3-input-bar {
+    padding: 6px 10px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; gap: 6px;
+    flex-shrink: 0;
+    background: var(--card);
+  }
+  .s3-input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 8.5px;
+    color: var(--sub);
+  }
+  .s3-send {
+    width: 24px; height: 24px;
+    background: linear-gradient(135deg, #071530, #0e2a50);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── SCREEN 4: Psicólogos ── */
+  .s4-header {
+    background: linear-gradient(155deg, var(--b1), var(--p2));
+    padding: 14px 14px 16px;
+    color: #fff;
+    flex-shrink: 0;
+    border-radius: 0 0 20px 20px;
+  }
+  .s4-title { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+  .s4-sub { font-size: 8px; opacity: 0.7; }
+  .s4-urgent {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 6px 10px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.9);
+    margin-top: 10px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .s4-body { padding: 10px 12px; flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 8px; }
+  .psy-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    display: flex; gap: 9px; align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(13,31,60,0.07);
+  }
+  .psy-avatar {
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .psy-name { font-size: 10px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .psy-spec { font-size: 8px; color: var(--sub); margin-bottom: 4px; }
+  .psy-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .psy-tag { font-size: 7px; padding: 2px 6px; border-radius: 10px; background: #e8eef4; border: 1px solid var(--border); color: #071530; }
+  .psy-avail {
+    background: #d1fae5;
+    border-radius: 10px;
+    padding: 3px 7px;
+    font-size: 7px;
+    font-weight: 500;
+    color: #065f46;
+    white-space: nowrap;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .psy-avail.busy { background: #fce7f3; color: #9d174d; }
+  .connect-btn {
+    background: linear-gradient(135deg, #071530, #0e2a50);
+    color: #fff;
+    border-radius: 14px;
+    padding: 8px;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    margin-top: auto;
+    box-shadow: 0 4px 12px rgba(108,79,207,0.25);
+  }
+
+  /* ── SCREEN 5: Sesión ── */
+  .s5-header {
+    background: linear-gradient(135deg, #040d1e, #0a1525);
+    padding: 10px 12px;
+    color: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .s5-info { display: flex; align-items: center; gap: 6px; }
+  .s5-avatar { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #1a4a78, #071530); display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; }
+  .s5-hname { font-size: 10px; font-weight: 600; }
+  .s5-timer { font-size: 9px; color: #1a4a78; font-weight: 500; }
+  .s5-rec { width: 8px; height: 8px; border-radius: 50%; background: #f87171; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .s5-call-area {
+    flex: 1;
+    background: #080f1a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px;
+    position: relative;
+  }
+  .s5-video-main {
+    width: 140px; height: 100px;
+    background: linear-gradient(135deg, #040d1e, #071530);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    border: 1px solid rgba(74,127,165,0.2);
+  }
+  .s5-video-self {
+    position: absolute;
+    bottom: 10px; right: 10px;
+    width: 46px; height: 60px;
+    background: #040d1e;
+    border-radius: 12px;
+    border: 1.5px solid rgba(74,127,165,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .s5-label { font-size: 9px; color: rgba(255,255,255,0.6); }
+  .s5-controls {
+    padding: 10px 0 12px;
+    display: flex; justify-content: center; gap: 12px;
+    background: #080f1a;
+    flex-shrink: 0;
+  }
+  .ctrl-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    border: 1px solid rgba(74,127,165,0.2);
+    background: rgba(74,127,165,0.1);
+  }
+  .ctrl-btn.end { background: #6b2037; border-color: #6b2037; }
+  .s5-note {
+    background: rgba(74,127,165,0.06);
+    border-top: 0.5px solid rgba(74,127,165,0.15);
+    padding: 6px 12px;
+    font-size: 7.5px;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* ── SCREEN 6: Historial ── */
+  .s6-header {
+    background: linear-gradient(155deg, #040d1e, #071530);
+    padding: 14px;
+    color: #fff;
+    flex-shrink: 0;
+    border-radius: 0 0 20px 20px;
+  }
+  .s6-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .s6-sub { font-size: 8px; opacity: 0.6; }
+  .s6-body { padding: 10px 12px; flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 7px; }
+  .s6-section { font-size: 8px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: 0.06em; }
+  .session-item {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(13,31,60,0.06);
+  }
+  .si-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+  .si-date { font-size: 9px; font-weight: 600; color: var(--text); }
+  .si-badge { font-size: 7px; padding: 2px 6px; border-radius: 10px; font-weight: 500; }
+  .si-badge.high { background: #e8eef4; color: #071530; }
+  .si-badge.med { background: #dce8f0; color: #040d1e; }
+  .si-badge.low { background: #d1fae5; color: #065f46; }
+  .si-psy { font-size: 8px; color: var(--sub); margin-bottom: 3px; }
+  .si-syms { display: flex; gap: 3px; flex-wrap: wrap; }
+  .si-sym { font-size: 7px; background: var(--bg); padding: 2px 5px; border-radius: 8px; border: 1px solid var(--border); color: var(--sub); }
+  .s6-mood-row { display: flex; gap: 5px; }
+  .mood-dot-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .mood-dot { width: 100%; height: 30px; border-radius: 8px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
+  .mood-day { font-size: 7px; color: var(--sub); }
+  .mood-val { font-size: 7px; font-weight: 600; }
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Mockups rediseñados — paleta azul-morado suave</h2>
+
+<div class="screens-container">
+
+  <!-- Screen 1: Inicio -->
+  <div class="screen-wrap">
+    <span class="screen-label">1 — Inicio</span>
+    <div class="phone">
+      <div class="status-bar" style="color:rgba(255,255,255,0.7);background:linear-gradient(155deg,#040d1e,#071530)"><span>9:41</span><span>●●●</span></div>
+      <div class="screen-content">
+        <div class="s1-header">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div>
+              <div class="s1-logo">
+                <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/><path d="M6 9c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round"/><circle cx="9" cy="9" r="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+              </div>
+              <div class="s1-title">Calma<br/>Inmediata</div>
+              <div class="s1-sub">Apoyo en crisis de ansiedad</div>
+            </div>
+            <div style="text-align:center">
+              <div class="s1-pulse"><div class="s1-pulse-inner"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 7h2l2-4 2 8 2-5 2 3 1-2h1" stroke="rgba(200,220,240,0.9)" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div style="font-size:7.5px;color:rgba(255,255,255,0.55)">En línea</div>
+            </div>
+          </div>
+        </div>
+        <div class="s1-body">
+          <div class="s1-sos">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-size:22px;flex-shrink:0">🆘</div>
+              <div style="text-align:left">
+                <div class="s1-sos-title">Estoy en crisis ahora</div>
+                <div class="s1-sos-sub">Conectar con psicólogo inmediatamente</div>
+              </div>
+            </div>
+          </div>
+          <div class="s1-option">
+            <div class="s1-option-icon" style="background:#e8eef4">🤖</div>
+            <div><div class="s1-option-text">Hablar con la IA</div><div class="s1-option-sub">Evalúa tus síntomas</div></div>
+          </div>
+          <div class="s1-option">
+            <div class="s1-option-icon" style="background:#dce8f0">🧘</div>
+            <div><div class="s1-option-text">Técnicas de calma</div><div class="s1-option-sub">Respiración · Grounding</div></div>
+          </div>
+          <div class="s1-option">
+            <div class="s1-option-icon" style="background:#eef2f5">📋</div>
+            <div><div class="s1-option-text">Mi historial</div><div class="s1-option-sub">Ver sesiones anteriores</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 2: Síntomas -->
+  <div class="screen-wrap">
+    <span class="screen-label">2 — Síntomas</span>
+    <div class="phone">
+      <div class="status-bar" style="color:rgba(255,255,255,0.7);background:linear-gradient(155deg,#040d1e,#071530)"><span>9:42</span><span>●●●</span></div>
+      <div class="screen-content">
+        <div class="s2-header">
+          <div class="s2-back">‹ Inicio</div>
+          <div class="s2-title">¿Cómo te sientes?</div>
+          <div class="s2-sub">Selecciona los síntomas que sientes ahora</div>
+        </div>
+        <div class="s2-body">
+          <div class="s2-section-label">Síntomas físicos</div>
+          <div class="s2-chips">
+            <div class="chip active">Taquicardia</div>
+            <div class="chip active">Dificultad al respirar</div>
+            <div class="chip">Mareos</div>
+            <div class="chip">Sudoración</div>
+            <div class="chip">Temblores</div>
+            <div class="chip">Náuseas</div>
+          </div>
+          <div class="s2-section-label">Síntomas emocionales</div>
+          <div class="s2-chips">
+            <div class="chip active">Miedo intenso</div>
+            <div class="chip">Sensación de muerte</div>
+            <div class="chip">Descontrol</div>
+            <div class="chip active">Pánico</div>
+          </div>
+          <div class="s2-section-label">Intensidad (1–10)</div>
+          <div class="s2-severity">
+            <div class="sev-dot on"></div><div class="sev-dot on"></div><div class="sev-dot on"></div>
+            <div class="sev-dot on"></div><div class="sev-dot on"></div><div class="sev-dot on"></div>
+            <div class="sev-dot on"></div><div class="sev-dot"></div><div class="sev-dot"></div><div class="sev-dot"></div>
+          </div>
+          <div class="s2-intensity"><span>Duración: ~10 min</span><span style="color:var(--text);font-weight:500">Agudo</span></div>
+          <button class="s2-btn">Analizar síntomas →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 3: Chat IA -->
+  <div class="screen-wrap">
+    <span class="screen-label">3 — Chat IA</span>
+    <div class="phone">
+      <div class="status-bar" style="color:rgba(255,255,255,0.7);background:linear-gradient(155deg,#040d1e,#071530)"><span>9:43</span><span>●●●</span></div>
+      <div class="screen-content">
+        <div class="s3-header">
+          <div class="s3-avatar">C</div>
+          <div>
+            <div class="s3-hname">Asistente Calma</div>
+            <div class="s3-hstatus"><span class="s3-status-dot"></span>En línea · IA</div>
+          </div>
+        </div>
+        <div class="s3-body">
+          <div class="msg bot">
+            <div class="msg-bubble">Hola. Estoy aquí contigo. Veo que sientes taquicardia y dificultad para respirar. ¿Cuánto tiempo llevas así?</div>
+            <div class="msg-time">9:43 am</div>
+          </div>
+          <div class="msg user">
+            <div class="msg-bubble">Unos 15 minutos, me asusté mucho y no sé qué hacer</div>
+            <div class="msg-time">9:43 am</div>
+          </div>
+          <div class="msg bot">
+            <div class="msg-bubble">Entiendo. Esto que sientes es una crisis de pánico — no es peligrosa aunque se sienta aterrador. Inhala 4 segundos...</div>
+            <div class="msg-time">9:44 am</div>
+          </div>
+          <div class="msg bot">
+            <div class="s3-typing"><span></span><span></span><span></span></div>
+          </div>
+          <div style="margin-top:auto;background:#e8eef4;border:1px solid #a0b8cc;border-radius:14px;padding:7px 9px">
+            <div style="font-size:8px;font-weight:600;color:#4a1528;margin-bottom:3px">🔴 Crisis severa detectada</div>
+            <div style="font-size:7.5px;color:var(--sub)">Recomendamos conectarte con un psicólogo ahora</div>
+            <div style="background:linear-gradient(135deg,#6c4fcf,#3b82f6);color:#fff;border-radius:10px;padding:5px 8px;font-size:8.5px;font-weight:600;text-align:center;margin-top:6px">Conectar con psicólogo →</div>
+          </div>
+        </div>
+        <div class="s3-input-bar">
+          <div class="s3-input">Escribe aquí...</div>
+          <div class="s3-send"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 5L1 1v3.5l6 .5-6 .5V9z" fill="white"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 4: Psicólogos -->
+  <div class="screen-wrap">
+    <span class="screen-label">4 — Conectar psicólogo</span>
+    <div class="phone">
+      <div class="status-bar" style="color:rgba(255,255,255,0.7);background:linear-gradient(155deg,#040d1e,#071530)"><span>9:44</span><span>●●●</span></div>
+      <div class="screen-content">
+        <div class="s4-header">
+          <div class="s4-title">Psicólogos disponibles</div>
+          <div class="s4-sub">Atención inmediata · Ahora mismo</div>
+          <div class="s4-urgent">
+            <span style="font-size:10px">⚡</span>
+            <span>Crisis severa · Prioridad alta · Tiempo estimado: &lt;2 min</span>
+          </div>
+        </div>
+        <div class="s4-body">
+          <div class="psy-card">
+            <div class="psy-avatar" style="background:linear-gradient(135deg,#6c4fcf,#3b82f6)">M</div>
+            <div style="flex:1">
+              <div class="psy-name">Dra. María Torres</div>
+              <div class="psy-spec">Psicóloga clínica · 8 años</div>
+              <div class="psy-tags">
+                <div class="psy-tag">Ansiedad</div>
+                <div class="psy-tag">Pánico</div>
+                <div class="psy-tag">TCC</div>
+              </div>
+              <div class="psy-avail">● Disponible ahora</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-size:9px;font-weight:600;color:var(--text)">4.9 ★</div>
+              <div style="font-size:7px;color:var(--sub)">312 sesiones</div>
+            </div>
+          </div>
+          <div class="psy-card">
+            <div class="psy-avatar" style="background:linear-gradient(135deg,#3b82f6,#1e3a8a)">C</div>
+            <div style="flex:1">
+              <div class="psy-name">Dr. Carlos Ruiz</div>
+              <div class="psy-spec">Psicoterapeuta · 12 años</div>
+              <div class="psy-tags">
+                <div class="psy-tag">Crisis</div>
+                <div class="psy-tag">Trauma</div>
+              </div>
+              <div class="psy-avail busy">● En sesión · 5 min</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="font-size:9px;font-weight:600;color:var(--text)">4.8 ★</div>
+              <div style="font-size:7px;color:var(--sub)">489 sesiones</div>
+            </div>
+          </div>
+          <div class="connect-btn">Iniciar sesión con Dra. Torres →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 5: Sesión activa -->
+  <div class="screen-wrap">
+    <span class="screen-label">5 — Sesión activa</span>
+    <div class="phone">
+      <div class="status-bar" style="background:#0f0a2e;color:rgba(255,255,255,0.5)"><span>9:47</span><span>●●●</span></div>
+      <div class="screen-content" style="background:#0f0a2e">
+        <div class="s5-header">
+          <div class="s5-info">
+            <div class="s5-avatar">MT</div>
+            <div>
+              <div class="s5-hname">Dra. María Torres</div>
+              <div class="s5-timer">03:24</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <div class="s5-rec"></div>
+            <span style="font-size:7.5px;color:rgba(255,255,255,0.45)">En curso</span>
+          </div>
+        </div>
+        <div class="s5-call-area">
+          <div class="s5-video-main">🧑‍⚕️</div>
+          <div class="s5-label">Dra. Torres</div>
+          <div class="s5-video-self">👤</div>
+        </div>
+        <div style="background:#1a1040;padding:7px 14px;flex-shrink:0">
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);margin-bottom:4px">Resumen en tiempo real</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.65);line-height:1.5">Síntomas: taquicardia, pánico · Intensidad: 7/10 · Duración: 15 min</div>
+        </div>
+        <div class="s5-controls">
+          <div class="ctrl-btn">🎤</div>
+          <div class="ctrl-btn">📷</div>
+          <div class="ctrl-btn end">✕</div>
+          <div class="ctrl-btn">💬</div>
+          <div class="ctrl-btn">⋮</div>
+        </div>
+        <div class="s5-note">El psicólogo recibe un resumen de tus síntomas automáticamente</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 6: Historial -->
+  <div class="screen-wrap">
+    <span class="screen-label">6 — Historial</span>
+    <div class="phone">
+      <div class="status-bar" style="color:rgba(255,255,255,0.7);background:linear-gradient(155deg,#040d1e,#071530)"><span>10:00</span><span>●●●</span></div>
+      <div class="screen-content">
+        <div class="s6-header">
+          <div class="s6-title">Mi historial</div>
+          <div class="s6-sub">Últimas 4 semanas</div>
+        </div>
+        <div class="s6-body">
+          <div class="s6-section">Estado de ánimo — esta semana</div>
+          <div class="s6-mood-row">
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(26,58,92,0.25);height:28px"><span class="mood-val" style="color:#071530;font-size:7px">7</span></div><span class="mood-day">L</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(26,58,92,0.15);height:20px"><span class="mood-val" style="color:#1a4a78;font-size:7px">5</span></div><span class="mood-day">M</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(44,95,138,0.2);height:12px"><span class="mood-val" style="color:#60a5fa;font-size:7px">3</span></div><span class="mood-day">X</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(44,95,138,0.15);height:8px"><span class="mood-val" style="color:#93c5fd;font-size:7px">2</span></div><span class="mood-day">J</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(44,95,138,0.1);height:5px"><span class="mood-val" style="color:#bfdbfe;font-size:7px">1</span></div><span class="mood-day">V</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(200,200,200,0.1);height:5px"><span class="mood-val" style="color:var(--sub);font-size:7px">—</span></div><span class="mood-day">S</span></div>
+            <div class="mood-dot-wrap"><div class="mood-dot" style="background:rgba(200,200,200,0.1);height:5px"><span class="mood-val" style="color:var(--sub);font-size:7px">—</span></div><span class="mood-day">D</span></div>
+          </div>
+          <div class="s6-section">Sesiones recientes</div>
+          <div class="session-item">
+            <div class="si-top">
+              <div class="si-date">Hoy, 9:47 am</div>
+              <div class="si-badge high">Crisis alta</div>
+            </div>
+            <div class="si-psy">Dra. María Torres · 18 min</div>
+            <div class="si-syms"><div class="si-sym">Taquicardia</div><div class="si-sym">Pánico</div><div class="si-sym">Disnea</div></div>
+          </div>
+          <div class="session-item">
+            <div class="si-top">
+              <div class="si-date">Lun 21, 11:30 am</div>
+              <div class="si-badge med">Moderada</div>
+            </div>
+            <div class="si-psy">Dr. Carlos Ruiz · 25 min</div>
+            <div class="si-syms"><div class="si-sym">Mareos</div><div class="si-sym">Miedo</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
